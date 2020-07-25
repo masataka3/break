@@ -15,3 +15,17 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+    var swiper = new Swiper('.swiper-container', {
+    loop: true,
+    pagination: {
+    el: '.swiper-pagination',
+    type: 'bullets',
+    clickable: true,
+  },
+    autoplay: {
+    disableOnInteraction: true
+    },
+  });
+});
