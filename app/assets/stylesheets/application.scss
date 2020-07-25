@@ -17,6 +17,20 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+ header{
+	height: 120px;
+ 	background-color:#dfefff;
+ 	border-bottom: dashed 6px white;
+		 .navbar-left{
+		    span{
+			font-size:20px;
+			padding-top:10px;
+    	}
+	}
+}
+
+
 .swiper-container,.swiper-wrapper,.swiper-slide{
   height: 500px;
   width: 100%;
