@@ -1,11 +1,21 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
-<div class ="container">
-	<div class="row">
-		<div><%=f.label :plofaile %></div>
-		<div><%= f.text_field :plofile %></div>
+<div class="body">
+	<div class ="container">
+		<div class="row">
+			 <%= form_for(@user) do |f| %>
 
-		<div>%= f.file_field :image %><</div>
-  		<%= f.submit %>
+		  <div class="user__text__field">
+            <div class="field"><%= f.label :name %></div>
+            <%= f.text_field :name, class: "name",size:75 %>
+          </div>
+
+          <div class="user__text__field">
+            <div class="profile__field"><%= f.label :profile %></div>
+            <%= f.text_area :profile, class: "profile", size: "20x10", class: "form-control"%>
+          </div>
+			<div><%= f.file_field :image %></div>
+		<div class="user__text__field">
+            <%= f.submit "プロフィールを変更する" , class: 'btn btn-success ' %></div>
+		</div>
 	</div>
+	<% end %>
 </div>
