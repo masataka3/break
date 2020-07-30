@@ -10,12 +10,13 @@ class User < ApplicationRecord
   has_many :following_user, through: :follower, source: :followed
   has_many :follower_user, through: :followed, source: :follower
   mount_uploader :image, ImageUploader
+  has_many :post_comments, dependent: :destroy
 
   # フォロー機能
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
-  
+
   def follow(user_id)
     follower.create!(followed_id: user_id)
   end

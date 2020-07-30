@@ -37,3 +37,51 @@
     <% end %>
   </span>
 <% end %>
+<li>
+  <i class="fa fa-comment"></i>
+  <a href="#comments"><%= @user.post_comments.count %></a>
+</li>
+<div class="comment-list bt style-2" id="comments">
+  <div class="float-wrapper">
+    <h2 class="comment-count"><%= @user.post_comments.count %>件コメント</h2>
+  </div>
+
+
+<ol>
+  <% @user.post_comments.each do |post_comment| %>
+    <li class="comment">
+      <div class="comment-body bb">
+        <div class="comment-avatar">
+        </div>
+        <div class="comment-text">
+          <div class="comment-author clearfix">
+            <a href="#" class="link-author"><%= post_comment.user.name %></a>
+            <span class="comment-meta">
+              <span class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></span>
+            </span>
+          </div>
+          <div class="comment-entry"><%= post_comment.comment %></div>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ol>
+
+<!-- <form class="mt-20"> -->
+<%= form_for [@user, @post_comment] do |f| %>
+  <div class="row">
+    <div class="col-sm-12">
+      <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+    </div>
+  </div>
+       <% if @post_comment.user == current_user %>
+            <div>
+              <%= link_to "削除", user_post_comment_path(post_comment.user, post_comment), method: :delete, class: "btn btn-danger pull-right" %>
+            </div>
+          <% end %>
+  <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+<% end %>
+<!-- </form> -->
+
+
+
