@@ -83,5 +83,20 @@
 <% end %>
 <!-- </form> -->
 
+<% if @user.favorited_by?(current_user) %>
+<li>
+  <%= link_to user_favorites_path(@user), method: :delete do %>
+    <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+    <%= @user.favorites.count %> いいね
+  <% end %>
+</li>
+<% else %>
+<li>
+  <%= link_to user_favorite_path(@user), method: :post do %>
+    <i class="fa fa-heart-o" aria-hidden="true"></i>
+    <%= @user.favorites.count %> いいね
+  <% end %>
+</li>
+<% end %>
 
 
