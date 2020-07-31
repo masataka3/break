@@ -18,6 +18,12 @@
 
   <body>
     <%= render 'layouts/header' %>
+    <span id="back">
+      <a href="#">
+        <%= image_tag asset_path("logo.png")%>
+
+      </a>
+    </span>
     <%= yield %>
   </body>
 </html>
