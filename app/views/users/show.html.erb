@@ -16,9 +16,6 @@
 		 <div><%= link_to '編集', edit_user_path(@user)%></div>
 				<% end %>
 		<div><%= link_to '一覧', users_path%></div>
-
-	</div>
-</div>
 <% if current_user != @user %>
   <span id="follow_form">
     <% if current_user.following?(@user) %>
@@ -85,7 +82,7 @@
 
 <% if @user.favorited_by?(current_user) %>
 <li>
-  <%= link_to user_favorites_path(@user), method: :delete do %>
+  <%= link_to user_favorite_path(@user), method: :delete do %>
     <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
     <%= @user.favorites.count %> いいね
   <% end %>
@@ -98,5 +95,8 @@
   <% end %>
 </li>
 <% end %>
+
+	</div>
+</div>
 
 
